@@ -3,7 +3,9 @@ import requests
 import json
 import csv
 url = "https://planetterp.com/api/v1/course"
+
 request= input("Which course do you want to review?")
+request2 = input("Who is your professor")
 
 params = {
     "name":request,
@@ -43,10 +45,7 @@ with open('course_reviews.csv', mode='w', newline='', encoding='utf-8') as file:
 df = pd.read_csv('course_reviews.csv')
 print(df['Review'])
 
-request2 = input("Would you like to look at a certain professor?")
-if request2 == 'yes':
-    request2 = input("Please enter professor")
-    filtered_df= df[df['Professor'] == request2]
+filtered_df= df[df['Professor'] == request2]
 
 print(filtered_df['Review'])
         
